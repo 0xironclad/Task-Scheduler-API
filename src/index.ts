@@ -1,11 +1,13 @@
 import "dotenv/config";
 import express, { Request, Response } from "express";
 import * as test_database from "./data/testDb.js"
+import errorHandler from "./middlewares/errorHandler.js";
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(errorHandler);
 
 app.get("/", (_req: Request, res: Response) => {
     res.json({
