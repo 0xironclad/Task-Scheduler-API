@@ -1,11 +1,13 @@
-import { createTaskController } from "../controller/taskController.js";
-import { validateCreateTask } from "../middlewares/taskValidator.js";
+import * as taskController from "../controller/taskController.js";
+import { validateCreateTask, validateUpdateTask } from "../middlewares/taskValidator.js";
 import express from "express";
 
-const taskRouter = express.Router()
+const taskRouter = express.Router();
 
-taskRouter.post("/tasks/create", validateCreateTask,  createTaskController)
+taskRouter.get("/tasks", taskController.getAllTasksController);
+// taskRouter.get("/tasks/:id", taskController.getTaskById);
+taskRouter.post("/tasks", validateCreateTask, taskController.createTaskController);
+// taskRouter.put("/tasks/:id", validateUpdateTask, taskController.updateTask);
+// taskRouter.delete("/tasks/:id", taskController.deleteTask);
 
-
-
-export default taskRouter
+export default taskRouter;

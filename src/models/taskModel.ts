@@ -17,3 +17,17 @@ export const createTask = async (params: CreateTaskParams) => {
     );
     return result.rows[0];
 };
+
+export const getTasksWithFilters = async (status?: string, ready?: boolean, limit: number = 10, offset: number = 0) => {
+    const result = await pool.query(
+        `SELECT id, name, description, run_at, status, priority, created_at, updated_at
+FROM app.tasks
+WHERE
+  ($1::text IS NULL OR status = $1::app.task_status)
+  AND ($2::boolean IS FALSE OR (status = 'pending' AND run_at <= NOW()))
+ORDER BY run_at ASC
+LIMIT $3 OFFSET $4`,
+        [status, ready, limit, offset]
+    );
+    return result.rows;
+};

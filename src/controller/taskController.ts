@@ -17,3 +17,18 @@ export const createTaskController = async (req: Request, res: Response, next: Ne
         next(error);
     }
 };
+
+
+export const getAllTasksController = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const status = req.query.status as string | undefined;
+        const ready = req.query.ready === 'true';
+        const limit = parseInt(req.query.limit as string) || 10;
+        const offset = parseInt(req.query.offset as string) || 0;
+
+        const tasks = await taskModel.getTasksWithFilters(status, ready, limit, offset);
+        res.status(200).json(tasks);
+    } catch (error) {
+        next(error);
+    }
+};
