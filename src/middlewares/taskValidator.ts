@@ -2,7 +2,7 @@ import Joi from "joi";
 import { Request, Response, NextFunction } from "express";
 
 const createTaskSchema = Joi.object({
-    name: Joi.string().required(),
+    name: Joi.string().required().min(2),
     description: Joi.string().optional(),
     run_at: Joi.date().required(),
     priority: Joi.number().integer().default(0),
