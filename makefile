@@ -1,5 +1,5 @@
-DEV= docker-compose -f docker-compose.dev.yml
-PROD= docker-compose -f docker-compose.yml
+DEV= docker compose -f docker-compose.dev.yaml
+PROD= docker compose -f docker-compose.yaml
 
 ## For Development
 dev-up:

@@ -6,7 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - DATABASE_URL=${DB_URL}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_HOST=db
+      - DB_NAME=${POSTGRES_DB}
+      - DB_PORT=5432
       - NODE_ENV=${NODE_ENV}
     ports:
       - "3000:3000"
@@ -20,6 +24,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - prod_pg_data:/var/lib/postgres/data
+      - prod_pg_data:/var/lib/postgresql/data
 volumes:
   prod_pg_data:

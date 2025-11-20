@@ -10,7 +10,11 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/appdb
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_HOST=db
+      - DB_NAME=${POSTGRES_DB}
+      - DB_PORT=5432
       - NODE_ENV=development
     ports:
       - "3000:3000"
@@ -26,6 +30,6 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - dev_pg_data:/var/lib/postgres/data
+      - dev_pg_data:/var/lib/postgresql/data
 volumes:
   dev_pg_data:
