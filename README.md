@@ -84,6 +84,24 @@ Database: appdb
 
 **Note:** In production mode, the database is not exposed and only accessible internally by the API container.
 
+### Schema Initialization
+
+The database schema (tables, types, indexes) is **automatically created** when the containers start for the first time. The initialization script is located at `src/data/queries.sql`.
+
+If you need to reset the database:
+
+```bash
+# Development
+make dev-down
+docker volume rm task-scheduler_dev_pg_data
+make dev-up
+
+# Production
+make down
+docker volume rm task-scheduler_prod_pg_data
+make up
+```
+
 ## Project Structure
 
 ```

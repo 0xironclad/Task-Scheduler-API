@@ -25,5 +25,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - prod_pg_data:/var/lib/postgresql/data
+      - ./src/data/queries.sql:/docker-entrypoint-initdb.d/init.sql
 volumes:
   prod_pg_data:

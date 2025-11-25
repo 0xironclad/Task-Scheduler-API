@@ -1,3 +1,6 @@
+-- Create schema if not exists
+CREATE SCHEMA IF NOT EXISTS app;
+
 CREATE TYPE app.task_status AS ENUM ('pending','running','done','failed','canceled');
 CREATE TYPE app.task_result AS ENUM ('success','error','skipped');
 
