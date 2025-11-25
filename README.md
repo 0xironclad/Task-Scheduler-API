@@ -2,7 +2,6 @@
 
 A task scheduling system built with Node, Express, TypeScript, Docker and PostgreSQL. Schedule tasks to run at specific times with priority handling and retry logic.
 
-> "Einstein probably never said this, but time management is relative."
 
 ## Quick Start for Contributors
 
