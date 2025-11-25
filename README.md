@@ -2,7 +2,6 @@
 
 A task scheduling system built with Node, Express, TypeScript, Docker and PostgreSQL. Schedule tasks to run at specific times with priority handling and retry logic.
 
-
 ## Quick Start for Contributors
 
 ### Prerequisites
@@ -32,12 +31,12 @@ cp .env.example .env
 make dev-up
 ```
 
-4. API is now running at `http://localhost:3000`
+4. API is now running at `http://localhost:3001`
 
 Test it:
 
 ```bash
-curl http://localhost:3000
+curl http://localhost:3001
 # {"message":"Hello World"}
 ```
 
@@ -58,6 +57,32 @@ make up          # Build & run production containers
 make down        # Stop production containers
 make logs        # View production logs
 ```
+
+## Database Access
+
+The PostgreSQL database is accessible in **development mode only** for debugging and inspection.
+
+### From Local Machine (TablePlus, DBeaver, pgAdmin Desktop, etc.)
+
+```
+Host: localhost (or 127.0.0.1)
+Port: 5433
+Username: postgres
+Password: postgres
+Database: appdb
+```
+
+### From Docker Container (pgAdmin4 extension, containerized tools)
+
+```
+Host: host.docker.internal
+Port: 5433
+Username: postgres
+Password: postgres
+Database: appdb
+```
+
+**Note:** In production mode, the database is not exposed and only accessible internally by the API container.
 
 ## Project Structure
 
