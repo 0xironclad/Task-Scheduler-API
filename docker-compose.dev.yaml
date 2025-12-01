@@ -18,7 +18,7 @@ services:
       - DB_PORT=5432
       - NODE_ENV=development
     ports:
-      - "3001:3000"
+      - "3002:3000"
     depends_on:
       - db
   db:
@@ -29,7 +29,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5433:5432"
+      - "5434:5432"
     volumes:
       - dev_pg_data:/var/lib/postgresql/data
       - ./src/data/queries.sql:/docker-entrypoint-initdb.d/init.sql
